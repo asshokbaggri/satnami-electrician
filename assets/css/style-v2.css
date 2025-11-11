@@ -405,12 +405,3 @@ p{color:#e6e6e6;line-height:1.65}
   .masonry{column-count:1}
   .footer-inner{text-align:center;justify-content:center}
 }
-
-/* ✅ MOBILE HIDE/SHOW */
-.only-desktop{display:flex}
-.only-mobile{display:none}
-
-@media(max-width:1024px){
-  .only-desktop{display:none !important}
-  .only-mobile{display:flex !important}
-}
