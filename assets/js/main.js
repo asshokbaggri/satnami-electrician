@@ -19,12 +19,34 @@
     document.body.style.overflow = isOpen ? "hidden" : "";
   }
 
-  // Open/close
+  // ✅ Click hamburger → toggle
   btn.addEventListener("click", () => toggle());
 
-  // Close when clicking links
+  // ✅ Click any link → close
   menu.querySelectorAll("a").forEach((a) => {
     a.addEventListener("click", () => toggle(false));
+  });
+
+  // ✅ Click outside menu to close
+  document.addEventListener("click", (e) => {
+    const isClickInsideMenu = menu.contains(e.target);
+    const isHamburger = btn.contains(e.target);
+
+    if (!isHamburger && !isClickInsideMenu && menu.classList.contains("show")) {
+      toggle(false);
+    }
+  });
+
+  // ✅ Swipe-down close (mobile feel)
+  let startY = 0;
+  menu.addEventListener("touchstart", (e) => {
+    startY = e.touches[0].clientY;
+  });
+  menu.addEventListener("touchmove", (e) => {
+    const currentY = e.touches[0].clientY;
+    if (currentY - startY > 80) {
+      toggle(false);
+    }
   });
 })();
 
@@ -201,6 +223,7 @@ const GALLERY_ITEMS = [
     lightbox.classList.add("show");
     lightbox.setAttribute("aria-hidden", "false");
   }
+
   function closeLightbox() {
     lightbox.classList.remove("show");
     lightbox.setAttribute("aria-hidden", "true");
