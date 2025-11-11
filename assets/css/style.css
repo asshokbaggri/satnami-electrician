@@ -460,3 +460,23 @@ p{
 #contact{
   scroll-margin-top:120px !important;
 }
+
+/* ✅ Desktop menu only on big screens */
+.desktop-menu {
+  display: flex;
+}
+
+/* ✅ Mobile-only items hidden on desktop */
+.mobile-only {
+  display: none;
+}
+
+/* ✅ Mobile responsive rules */
+@media(max-width: 1024px) {
+  .desktop-menu {
+    display: none;     /* hide desktop menu */
+  }
+  .mobile-only {
+    display: flex;     /* show hamburger */
+  }
+}
