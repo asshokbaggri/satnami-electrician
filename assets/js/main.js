@@ -7,45 +7,63 @@
 
   if (!btn || !menu) return;
 
-  function toggle(open) {
-    const isOpen =
-      open !== undefined ? open : !menu.classList.contains("show");
+  // ✅ Open Menu
+  function openMenu() {
+    menu.classList.add("show");
+    btn.setAttribute("aria-expanded", "true");
+    menu.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
 
-    menu.classList.toggle("show", isOpen);
-    btn.setAttribute("aria-expanded", isOpen);
-    menu.setAttribute("aria-hidden", !isOpen);
+  // ✅ Close Menu
+  function closeMenu() {
+    menu.classList.remove("show");
+    btn.setAttribute("aria-expanded", "false");
+    menu.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
 
-    // Lock scroll when open
-    document.body.style.overflow = isOpen ? "hidden" : "";
+  // ✅ Toggle Menu
+  function toggleMenu() {
+    if (menu.classList.contains("show")) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
   }
 
   // ✅ Click hamburger → toggle
-  btn.addEventListener("click", () => toggle());
-
-  // ✅ Click any link → close
-  menu.querySelectorAll("a").forEach((a) => {
-    a.addEventListener("click", () => toggle(false));
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleMenu();
   });
 
-  // ✅ Click outside menu to close
-  document.addEventListener("click", (e) => {
-    const isClickInsideMenu = menu.contains(e.target);
-    const isHamburger = btn.contains(e.target);
+  // ✅ Click menu links → close
+  menu.querySelectorAll("a").forEach((a) => {
+    a.addEventListener("click", () => closeMenu());
+  });
 
-    if (!isHamburger && !isClickInsideMenu && menu.classList.contains("show")) {
-      toggle(false);
+  // ✅ Click outside (background click) → close
+  document.addEventListener("click", (e) => {
+    if (
+      menu.classList.contains("show") &&
+      !menu.contains(e.target) &&
+      !btn.contains(e.target)
+    ) {
+      closeMenu();
     }
   });
 
-  // ✅ Swipe-down close (mobile feel)
+  // ✅ Swipe-down to close (iPhone smooth)
   let startY = 0;
   menu.addEventListener("touchstart", (e) => {
     startY = e.touches[0].clientY;
   });
+
   menu.addEventListener("touchmove", (e) => {
     const currentY = e.touches[0].clientY;
     if (currentY - startY > 80) {
-      toggle(false);
+      closeMenu();
     }
   });
 })();
@@ -86,7 +104,6 @@
 
   renderDots();
 
-  // Auto-slide
   let auto = setInterval(() => go(index + 1), 4000);
 
   slider.addEventListener("mouseenter", () => clearInterval(auto));
@@ -99,7 +116,6 @@
    ✅ GALLERY ITEMS (67 images + 3 videos)
 ========================================= */
 const GALLERY_ITEMS = [
-  /* PHOTOS */
   { type: "img", src: "images/work01.JPG" },
   { type: "img", src: "images/work02.JPG" },
   { type: "img", src: "images/work03.JPG" },
@@ -174,7 +190,6 @@ const GALLERY_ITEMS = [
   { type: "img", src: "images/work66.JPG" },
   { type: "img", src: "images/work67.JPG" },
 
-  /* VIDEOS */
   { type: "vid", src: "images/video01.MP4" },
   { type: "vid", src: "images/video02.MP4" },
   { type: "vid", src: "images/video03.MP4" },
@@ -196,7 +211,6 @@ const GALLERY_ITEMS = [
   const PAGE_SIZE = 15;
   let rendered = 0;
 
-  /* Add single item */
   function addItem(item) {
     const wrap = document.createElement("div");
     wrap.className = "masonry-item";
@@ -217,7 +231,6 @@ const GALLERY_ITEMS = [
     grid.appendChild(wrap);
   }
 
-  /* Lightbox */
   function openLightbox(src) {
     lightboxImg.src = src;
     lightbox.classList.add("show");
@@ -231,14 +244,15 @@ const GALLERY_ITEMS = [
   }
 
   closeBtn.addEventListener("click", closeLightbox);
+
   lightbox.addEventListener("click", (e) => {
     if (e.target === lightbox) closeLightbox();
   });
+
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeLightbox();
   });
 
-  /* Load more */
   function renderChunk() {
     const next = GALLERY_ITEMS.slice(rendered, rendered + PAGE_SIZE);
     next.forEach(addItem);
@@ -257,6 +271,5 @@ const GALLERY_ITEMS = [
 
   loadMoreBtn.addEventListener("click", renderChunk);
 
-  // Initial load
   renderChunk();
 })();
