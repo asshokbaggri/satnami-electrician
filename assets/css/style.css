@@ -448,3 +448,16 @@ p{
   .masonry{column-count:1}
   .footer-inner{text-align:center;justify-content:center}
 }
+
+/* FIX SECTION OVERLAP UNDER HEADER */
+.site-header {
+  height: 70px;
+}
+
+main {
+  padding-top: 70px;  /* header ki height jitna space upar */
+}
+
+.section {
+  scroll-margin-top: 80px; /* in-page links ka overlap fix */
+}
