@@ -95,24 +95,23 @@ html,body{
   background:#fff;
 }
 
-/* ✅ DEFAULT HIDE MOBILE MENU */
-.mobile-menu{ 
-  display:none; 
+/* ✅ MOBILE MENU — Correct Default State */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.95);
+  transform: translateY(-100%);   /* fully hidden */
+  transition: transform .35s ease;
+  z-index: 999;
+  display: none;                  /* not visible */
 }
 
-/* ✅ MOBILE MENU */
-.mobile-menu{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.95);
-    transform:translateY(-100%);
-    transition:transform .35s ease;
-    z-index:999;
+/* ✅ When menu is open */
+.mobile-menu.show {
+  display: block;
+  transform: translateY(0);        /* slide down */
 }
-.mobile-menu.show{
-    display:block;
-    transform:translateY(0);
-}
+
 
 .mobile-inner{
   max-width:var(--maxw);
