@@ -19,13 +19,13 @@
       <div class="brand">
         <!-- Logo (upload images/logo.png) -->
         <a href="#top" class="brand-link">
-          <img class="brand-logo" src="images/logo.png" alt="Satnami Electrician logo">
+          <img class="brand-logo" src="images/logo.png" alt="Satnami Electrician logo" />
           <span class="brand-name">Satnami Electrician</span>
         </a>
       </div>
 
       <!-- Desktop menu -->
-      <nav class="menu">
+      <nav class="menu" aria-label="Primary">
         <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#experience">Experience</a>
@@ -41,7 +41,7 @@
     </div>
 
     <!-- Mobile overlay menu -->
-    <nav id="mobileMenu" class="mobile-menu" aria-hidden="true">
+    <nav id="mobileMenu" class="mobile-menu" aria-hidden="true" aria-label="Mobile">
       <div class="mobile-inner">
         <a href="#about" class="m-link">About</a>
         <a href="#services" class="m-link">Services</a>
@@ -184,13 +184,14 @@
       <div class="container">
         <h2>Our Work Gallery</h2>
 
-        <!-- Filter (optional – currently hidden by CSS if not needed) -->
+        <!-- GRID FIRST -->
+        <div id="galleryGrid" class="masonry"></div>
+
+        <!-- CONTROLS BELOW GRID -->
         <div class="gallery-actions">
           <button id="loadMore" class="btn">Load More</button>
           <span class="muted small" id="counter"></span>
         </div>
-
-        <div id="galleryGrid" class="masonry"></div>
 
         <!-- LIGHTBOX -->
         <div id="lightbox" class="lightbox" aria-hidden="true">
