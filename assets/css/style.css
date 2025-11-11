@@ -33,6 +33,7 @@ html,body{
   background:rgba(0,0,0,.75);
   backdrop-filter:blur(8px);
   border-bottom:1px solid var(--border);
+  height:70px;
 }
 .site-header .nav{
   display:flex;
@@ -131,7 +132,7 @@ html,body{
 /* HERO */
 .hero{
   position:relative;
-  padding:130px 0 100px;
+  padding:140px 0 160px; /* bottom space increased */
   border-bottom:1px solid var(--border);
   overflow:hidden;
 }
@@ -169,9 +170,9 @@ html,body{
 }
 .hero-glow{
   position:absolute;
-  inset:auto -20% -40% -20%;
-  height:40vh;
-  background:radial-gradient(50% 50% at 50% 0%,rgba(255,196,0,.35),transparent 60%);
+  inset:auto -20% -260px -20%; /* FIX: push glow down */
+  height:55vh;
+  background:radial-gradient(50% 50% at 50% 0%,rgba(255,196,0,.3),transparent 60%);
   pointer-events:none;
 }
 
@@ -179,6 +180,7 @@ html,body{
 .section{
   padding:80px 0;
   border-bottom:1px solid var(--border);
+  scroll-margin-top:120px !important; /* FINAL FIX */
 }
 .two-col{
   display:grid;
@@ -440,11 +442,21 @@ p{
   .grid.cards-3{grid-template-columns:1fr 1fr}
   .grid.two{grid-template-columns:1fr}
   .masonry{column-count:2}
-  .hero{padding:110px 0 80px}
+  .hero{padding:120px 0 140px}
   .hero h1{font-size:40px}
 }
 @media(max-width:560px){
   .grid.cards-3{grid-template-columns:1fr}
   .masonry{column-count:1}
   .footer-inner{text-align:center;justify-content:center}
+}
+
+/* FINAL OFFSET FIX */
+#about,
+#services,
+#experience,
+#team,
+#gallery,
+#contact{
+  scroll-margin-top:120px !important;
 }
