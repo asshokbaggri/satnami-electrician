@@ -1,6 +1,8 @@
-/* ========== MOBILE MENU (Overlay) ========== */
+/* =========================================
+   ✅ MOBILE MENU — ONLY FOR MOBILE (<=1024px)
+========================================= */
 (function () {
-  const btn = document.querySelector(".hamburger");
+  const btn = document.querySelector(".hamburger.only-mobile");
   const menu = document.getElementById("mobileMenu");
 
   if (!btn || !menu) return;
@@ -13,19 +15,22 @@
     btn.setAttribute("aria-expanded", isOpen);
     menu.setAttribute("aria-hidden", !isOpen);
 
-    // Lock scroll when menu open
+    // Lock scroll when open
     document.body.style.overflow = isOpen ? "hidden" : "";
   }
 
+  // Open/close
   btn.addEventListener("click", () => toggle());
 
-  // Close menu when clicking links
-  menu.querySelectorAll("a").forEach((a) =>
-    a.addEventListener("click", () => toggle(false))
-  );
+  // Close when clicking links
+  menu.querySelectorAll("a").forEach((a) => {
+    a.addEventListener("click", () => toggle(false));
+  });
 })();
 
-/* ========== TEAM SLIDER ========== */
+/* =========================================
+   ✅ TEAM SLIDER
+========================================= */
 (function () {
   const slider = document.querySelector(".team-slider");
   if (!slider) return;
@@ -68,8 +73,9 @@
   });
 })();
 
-/* ========== GALLERY LIST (67 photos + 3 videos) ========== */
-
+/* =========================================
+   ✅ GALLERY ITEMS (67 images + 3 videos)
+========================================= */
 const GALLERY_ITEMS = [
   /* PHOTOS */
   { type: "img", src: "images/work01.JPG" },
@@ -152,7 +158,9 @@ const GALLERY_ITEMS = [
   { type: "vid", src: "images/video03.MP4" },
 ];
 
-/* ========== GALLERY: Masonry + Lightbox + Load More ========== */
+/* =========================================
+   ✅ GALLERY — Masonry + Lightbox + Load More
+========================================= */
 (function () {
   const grid = document.getElementById("galleryGrid");
   const lightbox = document.getElementById("lightbox");
@@ -207,7 +215,7 @@ const GALLERY_ITEMS = [
     if (e.key === "Escape") closeLightbox();
   });
 
-  /* LOAD MORE */
+  /* Load more */
   function renderChunk() {
     const next = GALLERY_ITEMS.slice(rendered, rendered + PAGE_SIZE);
     next.forEach(addItem);
