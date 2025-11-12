@@ -1,5 +1,5 @@
 /* =========================================
-   ✅ MOBILE MENU — ONLY FOR MOBILE (<=1024px)
+   ✅ MOBILE MENU — FIXED VERSION (works on all mobile browsers)
 ========================================= */
 (function () {
   const btn = document.querySelector(".hamburger.only-mobile");
@@ -13,6 +13,7 @@
     btn.setAttribute("aria-expanded", "true");
     menu.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+    document.body.classList.add("menu-open"); // NEW FIX
   }
 
   // ✅ Close Menu
@@ -21,6 +22,7 @@
     btn.setAttribute("aria-expanded", "false");
     menu.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
+    document.body.classList.remove("menu-open"); // NEW FIX
   }
 
   // ✅ Toggle Menu
@@ -54,7 +56,7 @@
     }
   });
 
-  // ✅ Swipe-down to close (iPhone smooth)
+  // ✅ Swipe-down to close (mobile)
   let startY = 0;
   menu.addEventListener("touchstart", (e) => {
     startY = e.touches[0].clientY;
@@ -63,6 +65,13 @@
   menu.addEventListener("touchmove", (e) => {
     const currentY = e.touches[0].clientY;
     if (currentY - startY > 80) {
+      closeMenu();
+    }
+  });
+
+  // ✅ Escape key to close (desktop testing or keyboard users)
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && menu.classList.contains("show")) {
       closeMenu();
     }
   });
