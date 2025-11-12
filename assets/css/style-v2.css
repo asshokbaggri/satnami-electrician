@@ -29,7 +29,7 @@ html,body{
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 500;   /* ✅ FIX: so menu appears ABOVE header too */
+  z-index: 500;
   background: rgba(0,0,0,.75);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
@@ -95,31 +95,24 @@ html,body{
   background:#fff;
 }
 
-/* ✅ MOBILE MENU — Correct Default State */
+/* ✅ MOBILE MENU — FIXED + UNIVERSAL BUG FIX */
 .mobile-menu {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: rgba(0,0,0,.95);
   transform: translateY(-100%);
   transition: transform .35s ease;
-  z-index: 99999 !important;
-
-  /* ✅ CRITICAL FIX */
+  z-index: 999999 !important;
   height: 100vh !important;
   overflow-y: auto !important;
 }
 
-
-/* ✅ When menu is open */
 .mobile-menu.show {
-  display: block;
   transform: translateY(0);
-
-  /* ✅ BLOCK SCROLL LEAK */
-  height: 100vh !important;
 }
-
-
 
 .mobile-inner{
   max-width:var(--maxw);
@@ -149,7 +142,7 @@ html,body{
   position:relative;
   padding:140px 0 160px;
   border-bottom:1px solid var(--border);
-  overflow:hidden;
+  /* overflow:hidden;  ❌ REMOVED — root cause of mobile overlay bug */
 }
 .hero-inner{max-width:900px}
 .hero-logo{
