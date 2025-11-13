@@ -40,6 +40,14 @@
     toggleMenu();
   });
 
+   // ✅ Close button in mobile menu
+const closeBtn = document.getElementById("closeMenuBtn");
+if (closeBtn) {
+  closeBtn.addEventListener("click", () => {
+    closeMenu();
+  });
+}
+
   // ✅ Click menu links → close
   menu.querySelectorAll("a").forEach((a) => {
     a.addEventListener("click", () => closeMenu());
