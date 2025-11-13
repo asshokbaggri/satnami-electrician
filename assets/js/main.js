@@ -69,6 +69,18 @@
     }
   });
 
+   // ✅ SAFETY FALLBACK — tap anywhere outside closes menu even if overlay bug occurs
+document.addEventListener("touchend", (e) => {
+  if (
+    menu.classList.contains("show") &&
+    !menu.contains(e.target) &&
+    !btn.contains(e.target)
+  ) {
+    closeMenu();
+  }
+});
+
+
   // ✅ Escape key to close (desktop testing or keyboard users)
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && menu.classList.contains("show")) {
