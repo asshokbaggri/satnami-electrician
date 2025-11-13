@@ -116,9 +116,15 @@ html,body{
   transform: translateY(0);
   opacity: 1;
   visibility: visible;
-  pointer-events: auto;
-  touch-action: auto;
+
+  /* 🔥 THE REAL FIX */
+  pointer-events: auto !important;
+  touch-action: auto !important;
+
+  /* EXTRA FIX FOR iPhone */
+  -webkit-overflow-scrolling: touch;
 }
+
 
 .mobile-inner {
   max-width: var(--maxw);
