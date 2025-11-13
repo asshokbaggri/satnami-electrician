@@ -37,13 +37,13 @@ html,body{
   background: rgba(0,0,0,.75);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
-  height: 70px;
+  height: 110px;
 }
 .site-header .nav{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  height:68px;
+  height:108px;
 }
 .brand-link{
   display:flex;
