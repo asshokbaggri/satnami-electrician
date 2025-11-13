@@ -49,12 +49,13 @@ html,body{
   color:var(--fg);
 }
 
-.brand-logo{
-  width:55px;
-  height:55px;
-  object-fit:contain;
-  filter:drop-shadow(0 0 14px rgba(255,196,0,.3));
+.brand-logo {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 14px rgba(255,196,0,.25));
 }
+
 
 /* Desktop Menu */
 .menu{
