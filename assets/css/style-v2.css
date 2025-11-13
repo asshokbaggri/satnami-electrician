@@ -8,6 +8,10 @@
   --maxw:1200px;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 /* RESET */
 *{box-sizing:border-box}
 html,body{
@@ -184,10 +188,14 @@ html,body{
 }
 .hero-glow{
   position:absolute;
-  inset:auto -20% -260px -20%;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:-250px;
+  width:140%;
   height:55vh;
   background:radial-gradient(50% 50% at 50% 0%,rgba(255,196,0,.3),transparent 60%);
   pointer-events:none;
+  overflow:hidden;
 }
 
 /* ✅ SECTIONS */
@@ -459,4 +467,14 @@ p{color:#e6e6e6;line-height:1.65}
   margin-bottom: 20px;
   letter-spacing: 1px;
   padding-top: 10px;
+}
+
+/* ============================================
+   SAFE WIDTH FIX — NO SIDE SCROLL
+============================================ */
+.masonry,
+.grid,
+.section,
+.container {
+  overflow-x: hidden;
 }
