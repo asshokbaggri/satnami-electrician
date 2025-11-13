@@ -48,16 +48,12 @@ html,body{
   text-decoration:none;
   color:var(--fg);
 }
+
 .brand-logo{
-  width:40px;
-  height:40px;
+  width:55px;
+  height:55px;
   object-fit:contain;
-  filter:drop-shadow(0 0 12px rgba(255,196,0,.2));
-}
-.brand-name{
-  font-weight:700;
-  font-size:1.1rem;
-  letter-spacing:.2px;
+  filter:drop-shadow(0 0 14px rgba(255,196,0,.3));
 }
 
 /* Desktop Menu */
@@ -161,12 +157,7 @@ html,body{
   /* overflow:hidden;  ❌ REMOVED — root cause of mobile overlay bug */
 }
 .hero-inner{max-width:900px}
-.hero-logo{
-  width:62px;
-  height:62px;
-  opacity:.95;
-  margin-bottom:10px;
-}
+
 .eyebrow{
   color:var(--yellow);
   font-weight:700;
