@@ -95,47 +95,57 @@ html,body{
   background:#fff;
 }
 
-/* ✅ MOBILE MENU — FIXED + UNIVERSAL BUG FIX */
+/* ✅ MOBILE MENU — UNIVERSAL FIX */
 .mobile-menu {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0,0,0,.95);
+  inset: 0;
+  background: rgba(0,0,0,.96);
   transform: translateY(-100%);
-  transition: transform .35s ease;
+  transition: transform 0.35s ease;
   z-index: 999999 !important;
-  height: 100vh !important;
-  overflow-y: auto !important;
+  height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  touch-action: none;
 }
 
 .mobile-menu.show {
   transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  touch-action: auto;
 }
 
-.mobile-inner{
-  max-width:var(--maxw);
-  margin:0 auto;
-  padding:100px 20px 24px;
-  display:flex;
-  flex-direction:column;
-  gap:18px;
+.mobile-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 100px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
-.m-link{
-  color:#fff;
-  text-decoration:none;
-  font-size:1.25rem;
-  padding:16px;
-  border-radius:10px;
-  background:rgba(255,255,255,.05);
-  border:1px solid var(--border);
+
+.m-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.25rem;
+  padding: 16px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid var(--border);
+  -webkit-tap-highlight-color: transparent; /* iOS tap flicker fix */
 }
-.m-btn{
-  display:inline-block;
-  padding:16px;
-  text-align:center;
+
+.m-btn {
+  display: inline-block;
+  padding: 16px;
+  text-align: center;
 }
+
 
 /* ✅ HERO */
 .hero{
