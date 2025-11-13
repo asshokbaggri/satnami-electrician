@@ -422,3 +422,33 @@ p{color:#e6e6e6;line-height:1.65}
   .masonry{column-count:1}
   .footer-inner{text-align:center;justify-content:center}
 }
+
+/* ============================================
+   ✅ MOBILE MENU CLOSE BUTTON (FINAL FIX)
+============================================ */
+.close-menu-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 999999999;
+  background: rgba(255,255,255,0.15);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  font-size: 30px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  -webkit-tap-highlight-color: transparent;
+  line-height: 0;
+}
+
+.close-menu-btn:active {
+  transform: scale(0.93);
+}
+
